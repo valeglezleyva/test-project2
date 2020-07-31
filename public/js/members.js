@@ -5,7 +5,11 @@ $(document).ready(function () {
     $(".member-name").text(data.email);
   });
 
-  $(".add-new-rock").click(function () {
+  $(".add-new-rock").click(addForm);
+
+  $(document).on("click", ".sellerSubBtn" , addNewRock);
+  
+  function addForm() {
     $("#add-rock-form").append(
       `<div class="row">
           <form id="sellerForm" class="col s12">
@@ -34,54 +38,23 @@ $(document).ready(function () {
           </form>
       </div>`
     ); 
-  }); 
-  addNewRock();
+  }
 
   function addNewRock() {
-    $(".sellerSubBtn").click(function () {
-      $("#empty-div").append(
-        `<div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="https://i.pinimg.com/originals/7b/f2/0f/7bf20f01af1b9fb5c940724892da0e93.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Rock example<i class="material-icons right">more_vert</i></span>
-          <a class="trade-rock waves-effect waves-light btn-small">Trade rock</a>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Rock example<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this rock that is only revealed once clicked on.</p>
-        </div>
-      </div>`);
-    });
+    $("#empty-div").append(
+      `<div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="https://i.pinimg.com/originals/7b/f2/0f/7bf20f01af1b9fb5c940724892da0e93.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Rock example<i class="material-icons right">more_vert</i></span>
+        <a class="trade-rock waves-effect waves-light btn-small">Trade rock</a>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Rock example<i class="material-icons right">close</i></span>
+        <p>Here is some more information about this rock that is only revealed once clicked on.</p>
+      </div>
+    </div>`);
   }
-  
-  // function addNewRock () {
-  //   $("#sellerSubBtn").click(function () {
-  //     const name = $("#name").val()? $("#name").val().trim(): "";
-  //     const image = $("#image").val()? $("#image").val().trim(): "";
-  //     const desc = $("#desc").val()? $("#desc").val().trim(): "";
-
-  //     // if (!name || !image) {
-  //     //  return;
-  //     //} 
-
-  //     const data = {
-  //       name,
-  //       image,
-  //       desc
-  //     };
- 
-  //     console.log("seller data", data);
-
-  //     $.post(
-  //       "/api/rock/sellerData",
-  //       data
-  //     ).then();
-  //     }).catch(sellerdataErr => {
-  //       console.log("Error submitting form", sellerdataErr);
-  //     });
-  //   }
 
 });
-
